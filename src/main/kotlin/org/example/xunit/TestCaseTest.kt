@@ -2,16 +2,21 @@ package org.example.xunit
 
 class TestCaseTest(name: String) : TestCase(name) {
 
-    fun testRunning() {
-        val test = WasRun("testMethod")
-        check(!test.wasRun)
-        test.run()
-        check(test.wasRun)
-        println("Test running test passed!")
+    private lateinit var test: WasRun
+
+    override fun setUp() {
+        super.setUp()
+        test = WasRun("testMethod")
     }
 
-}
+    fun testRunning() {
+        test.run()
+        assertTrue(test.wasRun)
+    }
 
-fun main() {
-    TestCaseTest("testRunning").run()
+    fun testSetUp() {
+        test.run()
+        assertTrue(test.wasSetUp)
+    }
+
 }
