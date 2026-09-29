@@ -1,8 +1,17 @@
 package org.example.xunit
 
+class TestCaseTest(name: String) : TestCase(name) {
+
+    fun testRunning() {
+        val test = WasRun("testMethod")
+        check(!test.wasRun)
+        test.run()
+        check(test.wasRun)
+        println("Test running test passed!")
+    }
+
+}
+
 fun main() {
-    val test = WasRun("testMethod")
-    println(test.wasRun)
-    test.run()
-    println(test.wasRun)
+    TestCaseTest("testRunning").run()
 }
