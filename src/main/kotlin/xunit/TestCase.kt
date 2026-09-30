@@ -8,7 +8,9 @@ open class TestCase(protected val name: String) {
 
     protected open fun tearDown() {}
 
-    fun run() {
+    fun run(): TestResult {
+        val result = TestResult()
+        result.testStarted()
         setUp()
 
         val function = this::class.memberFunctions.firstOrNull { it.name == name }
@@ -16,6 +18,7 @@ open class TestCase(protected val name: String) {
         function.call(this)
 
         tearDown()
+        return result
     }
 
 }
