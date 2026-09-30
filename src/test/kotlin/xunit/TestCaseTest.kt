@@ -7,7 +7,7 @@ class TestCaseTest(name: String) : TestCase(name) {
     fun testTemplateMethod() {
         test = WasRun("testMethod")
         test.run()
-        assertEquals("setUp testMethod ", test.log)
+        assertEquals("setUp testMethod tearDown ", test.log)
     }
 
 }

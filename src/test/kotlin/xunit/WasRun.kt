@@ -8,6 +8,10 @@ class WasRun(name: String) : TestCase(name) {
         log = "setUp "
     }
 
+    override fun tearDown() {
+        log += "tearDown "
+    }
+
     fun testMethod() {
         log += "testMethod "
     }
