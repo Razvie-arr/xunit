@@ -2,16 +2,14 @@ package xunit
 
 class WasRun(name: String) : TestCase(name) {
 
-    var wasRun: Boolean = false
-    var wasSetUp: Boolean = false
+    lateinit var log: String
 
     override fun setUp() {
-        wasRun = false
-        wasSetUp = true
+        log = "setUp "
     }
 
     fun testMethod() {
-        wasRun = true
+        log += "testMethod "
     }
 
 }
