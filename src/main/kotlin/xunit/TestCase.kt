@@ -11,18 +11,25 @@ open class TestCase(protected val name: String) {
     fun run(): TestResult {
         val result = TestResult()
         result.testStarted()
-        setUp()
 
         try {
-            val function = this::class.memberFunctions.firstOrNull { it.name == name }
-                ?: error("Test method '$name' not found on ${this::class.simpleName}")
-            function.call(this)
+            setUp()
+            runTestAndTearDown()
         } catch (_: Throwable) {
             result.testFailed()
         }
 
-        tearDown()
         return result
+    }
+
+    private fun runTestAndTearDown() {
+        try {
+            val function = this::class.memberFunctions.firstOrNull { it.name == name }
+                ?: error("Test method '$name' not found on ${this::class.simpleName}")
+            function.call(this)
+        } finally {
+            tearDown()
+        }
     }
 
 }

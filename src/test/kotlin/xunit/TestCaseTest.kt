@@ -29,4 +29,11 @@ class TestCaseTest(name: String) : TestCase(name) {
         assertEquals("1 run, 1 failed", result.summary())
     }
 
+    fun testSetUpFailure() {
+        val test = WasRun("testMethod")
+        test.failSetUp = true
+        val result = test.run()
+        assertEquals("1 run, 1 failed", result.summary())
+    }
+
 }
