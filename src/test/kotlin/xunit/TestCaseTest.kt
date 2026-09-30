@@ -22,4 +22,11 @@ class TestCaseTest(name: String) : TestCase(name) {
         assertEquals("1 run, 1 failed", result.summary())
     }
 
+    fun testFailedResultFormatting() {
+        val result = TestResult()
+        result.testStarted()
+        result.testFailed()
+        assertEquals("1 run, 1 failed", result.summary())
+    }
+
 }

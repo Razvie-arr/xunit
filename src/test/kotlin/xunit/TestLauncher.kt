@@ -1,7 +1,8 @@
 package xunit
 
 fun main() {
-    TestCaseTest("testTemplateMethod").run()
-    TestCaseTest("testResult").run()
-    TestCaseTest("testFailedResult").run()
+    println(TestCaseTest("testTemplateMethod").run().summary())
+    println(TestCaseTest("testResult").run().summary())
+    println(TestCaseTest("testFailedResult").run().summary())
+    println(TestCaseTest("testFailedResultFormatting").run().summary())
 }
