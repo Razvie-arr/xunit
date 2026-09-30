@@ -1,4 +1,4 @@
-package org.example.xunit
+package xunit
 
 import kotlin.reflect.full.memberFunctions
 

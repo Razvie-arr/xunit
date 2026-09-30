@@ -1,4 +1,4 @@
-package org.example.xunit
+package xunit
 
 class TestCaseTest(name: String) : TestCase(name) {
 

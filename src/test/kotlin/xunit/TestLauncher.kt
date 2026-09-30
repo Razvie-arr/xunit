@@ -1,4 +1,4 @@
-package org.example.xunit
+package xunit
 
 fun main() {
     TestCaseTest("testRunning").run()

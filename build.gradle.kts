@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "2.3.21"
 }
 
-group = "example"
+group = "xunit"
 version = "1.0-SNAPSHOT"
 
 repositories {

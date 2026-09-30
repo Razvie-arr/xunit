@@ -1,4 +1,4 @@
-package org.example.xunit
+package xunit
 
 fun assertEquals(expected: Any?, actual: Any?) {
     if (expected != actual) {
