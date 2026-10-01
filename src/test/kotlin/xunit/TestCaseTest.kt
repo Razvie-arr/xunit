@@ -1,5 +1,11 @@
 package xunit
 
+import xunit.annotations.BeforeEach
+import xunit.annotations.Test
+import xunit.core.TestCase
+import xunit.core.TestResult
+import xunit.core.TestSuite
+
 class TestCaseTest(name: String) : TestCase(name) {
 
     private lateinit var test: WasRun

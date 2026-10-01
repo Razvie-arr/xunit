@@ -1,4 +1,4 @@
-package xunit
+package xunit.annotations
 
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)

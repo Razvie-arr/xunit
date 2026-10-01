@@ -1,5 +1,10 @@
 package xunit
 
+import xunit.annotations.AfterEach
+import xunit.annotations.BeforeEach
+import xunit.annotations.Test
+import xunit.core.TestCase
+
 class WasRun(name: String) : TestCase(name) {
 
     lateinit var log: String

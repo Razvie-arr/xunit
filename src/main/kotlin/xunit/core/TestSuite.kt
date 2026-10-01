@@ -1,5 +1,6 @@
-package xunit
+package xunit.core
 
+import xunit.annotations.Test
 import kotlin.reflect.KClass
 import kotlin.reflect.full.memberFunctions
 

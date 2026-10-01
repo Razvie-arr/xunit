@@ -7,5 +7,3 @@ fun assertEquals(expected: Any?, actual: Any?) {
 }
 
 fun assertTrue(actual: Boolean) = assertEquals(true, actual)
-
-fun assertFalse(actual: Boolean) = assertEquals(false, actual)

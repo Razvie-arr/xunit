@@ -1,4 +1,4 @@
-package xunit
+package xunit.core
 
 class TestResult {
 

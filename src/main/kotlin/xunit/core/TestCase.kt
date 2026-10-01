@@ -1,6 +1,8 @@
-package xunit
+package xunit.core
 
 import java.lang.reflect.InvocationTargetException
+import xunit.annotations.AfterEach
+import xunit.annotations.BeforeEach
 import kotlin.reflect.KClass
 import kotlin.reflect.full.memberFunctions
 
