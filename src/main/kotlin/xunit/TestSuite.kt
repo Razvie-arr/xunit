@@ -1,14 +1,14 @@
 package xunit
 
-class TestSuite {
+class TestSuite : Test {
 
-    private val tests = mutableListOf<TestCase>()
+    private val tests = mutableListOf<Test>()
 
-    fun add(test: TestCase) {
+    fun add(test: Test) {
         tests.add(test)
     }
 
-    fun run(result: TestResult) {
+    override fun run(result: TestResult) {
         for (test in tests) {
             test.run(result)
         }

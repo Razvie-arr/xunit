@@ -2,13 +2,13 @@ package xunit
 
 import kotlin.reflect.full.memberFunctions
 
-open class TestCase(protected val name: String) {
+open class TestCase(protected val name: String) : Test {
 
     protected open fun setUp() {}
 
     protected open fun tearDown() {}
 
-    fun run(result: TestResult) {
+    override fun run(result: TestResult) {
         result.testStarted()
 
         try {

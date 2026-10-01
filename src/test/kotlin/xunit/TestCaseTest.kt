@@ -49,4 +49,17 @@ class TestCaseTest(name: String) : TestCase(name) {
         assertEquals("2 run, 1 failed", result.summary())
     }
 
+    fun testNestedSuite() {
+        val innerSuite = TestSuite()
+        innerSuite.add(WasRun("testMethod"))
+
+        val outerSuite = TestSuite()
+        outerSuite.add(innerSuite)
+        outerSuite.add(WasRun("testBrokenMethod"))
+
+        val result = TestResult()
+        outerSuite.run(result)
+        assertEquals("2 run, 1 failed", result.summary())
+    }
+
 }

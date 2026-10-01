@@ -8,6 +8,7 @@ fun main() {
     suite.add(TestCaseTest("testFailedResultFormatting"))
     suite.add(TestCaseTest("testSetUpFailure"))
     suite.add(TestCaseTest("testSuite"))
+    suite.add(TestCaseTest("testNestedSuite"))
 
     val result = TestResult()
     suite.run(result)
