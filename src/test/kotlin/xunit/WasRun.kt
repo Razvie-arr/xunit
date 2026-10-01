@@ -23,7 +23,7 @@ class WasRun(name: String) : TestCase(name) {
 
     @Test
     fun testBrokenMethod() {
-        throw Exception()
+        throw RuntimeException()
     }
 
 }

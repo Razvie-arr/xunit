@@ -2,13 +2,19 @@ package xunit
 
 class TestResult {
 
-    private var runCount = 0
-    private var errorCount = 0
+    data class Failure(val testName: String, val cause: Throwable)
 
-    fun summary() = "$runCount run, $errorCount failed"
+    private var runCount = 0
+    private val failures = mutableListOf<Failure>()
+
+    fun summary() = "$runCount run, ${failures.size} failed"
+
+    fun failures(): List<Failure> = failures.toList()
 
     fun testStarted() = runCount++
 
-    fun testFailed() = errorCount++
-
+    fun testFailed(testName: String, cause: Throwable) {
+        failures.add(Failure(testName, cause))
+    }
+    
 }

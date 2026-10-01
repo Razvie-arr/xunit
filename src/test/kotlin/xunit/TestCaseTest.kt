@@ -39,7 +39,7 @@ class TestCaseTest(name: String) : TestCase(name) {
     @Test
     fun testFailedResultFormatting() {
         result.testStarted()
-        result.testFailed()
+        result.testFailed("dummyTest", RuntimeException("dummy"))
 
         assertEquals("1 run, 1 failed", result.summary())
     }
@@ -88,6 +88,18 @@ class TestCaseTest(name: String) : TestCase(name) {
         suite.run(result)
 
         assertEquals("2 run, 1 failed", result.summary())
+    }
+
+    @Test
+    fun testFailedTestResults() {
+        test = WasRun("testBrokenMethod")
+
+        test.run(result)
+
+        assertEquals(1, result.failures().size)
+        val failure = result.failures().first()
+        assertEquals("testBrokenMethod", failure.testName)
+        assertTrue(failure.cause is RuntimeException)
     }
 
 }

@@ -1,5 +1,6 @@
 package xunit
 
+import java.lang.reflect.InvocationTargetException
 import kotlin.reflect.full.memberFunctions
 
 open class TestCase(protected val name: String) : Testable {
@@ -14,8 +15,9 @@ open class TestCase(protected val name: String) : Testable {
         try {
             setUp()
             runTestAndTearDown()
-        } catch (_: Throwable) {
-            result.testFailed()
+        } catch (t: Throwable) {
+            val rootCause = if (t is InvocationTargetException) t.targetException ?: t else t
+            result.testFailed(name, rootCause)
         }
     }
 
