@@ -1,7 +1,6 @@
 package xunit
 
 import kotlin.reflect.KClass
-import kotlin.reflect.full.findAnnotation
 import kotlin.reflect.full.memberFunctions
 
 class TestSuite : Testable {
@@ -18,7 +17,9 @@ class TestSuite : Testable {
             } ?: error("${testClass.simpleName} must have a constructor taking a String name")
 
             testClass.memberFunctions
-                .filter { it.findAnnotation<Test>() != null }
+                .filter { function ->
+                    function.annotations.any { it.annotationClass == Test::class }
+                }
                 .forEach { function ->
                     suite.add(constructor.call(function.name))
                 }

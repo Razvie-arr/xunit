@@ -5,14 +5,16 @@ class WasRun(name: String) : TestCase(name) {
     lateinit var log: String
     var failSetUp = false
 
-    override fun setUp() {
+    @BeforeEach
+    fun beforeEach() {
         if (failSetUp) {
             throw RuntimeException("setUp failed")
         }
         log = "setUp "
     }
 
-    override fun tearDown() {
+    @AfterEach
+    fun afterEach() {
         log += "tearDown "
     }
 

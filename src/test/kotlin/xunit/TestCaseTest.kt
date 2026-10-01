@@ -5,12 +5,13 @@ class TestCaseTest(name: String) : TestCase(name) {
     private lateinit var test: WasRun
     private lateinit var result: TestResult
 
-    override fun setUp() {
+    @BeforeEach
+    fun beforeEach() {
         result = TestResult()
     }
 
     @Test
-    fun testTemplateMethod() {
+    fun testBeforeEachAndAfterEachAnnotations() {
         test = WasRun("testMethod")
 
         test.run(result)
