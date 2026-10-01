@@ -1,7 +1,7 @@
 package xunit
 
 fun main() {
-    val suite = TestSuite(TestCaseTest::class)
+    val suite = TestSuite.from(TestCaseTest::class)
     val result = TestResult()
     suite.run(result)
     println(result.summary())

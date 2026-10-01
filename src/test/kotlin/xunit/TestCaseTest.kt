@@ -74,7 +74,7 @@ class TestCaseTest(name: String) : TestCase(name) {
     }
 
     fun testCreateAndRunSuiteFromClass() {
-        val suite = TestSuite(WasRun::class)
+        val suite = TestSuite.from(WasRun::class)
         val result = TestResult()
 
         suite.run(result)
