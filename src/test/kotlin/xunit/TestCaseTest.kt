@@ -33,7 +33,13 @@ class TestCaseTest(name: String) : TestCase(name) {
 
         test.run(result)
 
-        assertEquals("1 run, 1 failed", result.summary())
+        assertEquals(
+            """
+            1 run, 1 failed
+            testBrokenMethod: RuntimeException
+            """.trimIndent(),
+            result.summary(),
+        )
     }
 
     @Test
@@ -41,7 +47,13 @@ class TestCaseTest(name: String) : TestCase(name) {
         result.testStarted()
         result.testFailed("dummyTest", RuntimeException("dummy"))
 
-        assertEquals("1 run, 1 failed", result.summary())
+        assertEquals(
+            """
+            1 run, 1 failed
+            dummyTest: RuntimeException: dummy
+            """.trimIndent(),
+            result.summary(),
+        )
     }
 
     @Test
@@ -51,7 +63,13 @@ class TestCaseTest(name: String) : TestCase(name) {
 
         test.run(result)
 
-        assertEquals("1 run, 1 failed", result.summary())
+        assertEquals(
+            """
+            1 run, 1 failed
+            testMethod: RuntimeException: setUp failed
+            """.trimIndent(),
+            result.summary(),
+        )
     }
 
     @Test
@@ -63,7 +81,13 @@ class TestCaseTest(name: String) : TestCase(name) {
 
         suite.run(result)
 
-        assertEquals("2 run, 1 failed", result.summary())
+        assertEquals(
+            """
+            2 run, 1 failed
+            testBrokenMethod: RuntimeException
+            """.trimIndent(),
+            result.summary(),
+        )
     }
 
     @Test
@@ -77,7 +101,13 @@ class TestCaseTest(name: String) : TestCase(name) {
 
         val result = TestResult()
         outerSuite.run(result)
-        assertEquals("2 run, 1 failed", result.summary())
+        assertEquals(
+            """
+            2 run, 1 failed
+            testBrokenMethod: RuntimeException
+            """.trimIndent(),
+            result.summary(),
+        )
     }
 
     @Test
@@ -87,7 +117,13 @@ class TestCaseTest(name: String) : TestCase(name) {
 
         suite.run(result)
 
-        assertEquals("2 run, 1 failed", result.summary())
+        assertEquals(
+            """
+            2 run, 1 failed
+            testBrokenMethod: RuntimeException
+            """.trimIndent(),
+            result.summary(),
+        )
     }
 
     @Test
@@ -100,6 +136,7 @@ class TestCaseTest(name: String) : TestCase(name) {
         val failure = result.failures().first()
         assertEquals("testBrokenMethod", failure.testName)
         assertTrue(failure.cause is RuntimeException)
+        assertTrue(result.summary().contains("testBrokenMethod: RuntimeException"))
     }
 
 }

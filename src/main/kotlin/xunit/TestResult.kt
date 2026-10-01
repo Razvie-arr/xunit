@@ -7,7 +7,19 @@ class TestResult {
     private var runCount = 0
     private val failures = mutableListOf<Failure>()
 
-    fun summary() = "$runCount run, ${failures.size} failed"
+    fun summary(): String {
+        val counts = "$runCount run, ${failures.size} failed"
+        if (failures.isEmpty()) {
+            return counts
+        }
+
+        val details = failures.joinToString("\n") { failure ->
+            val cause = failure.cause
+            val message = cause.message?.let { ": $it" } ?: ""
+            "${failure.testName}: ${cause::class.simpleName}$message"
+        }
+        return "$counts\n$details"
+    }
 
     fun failures(): List<Failure> = failures.toList()
 
