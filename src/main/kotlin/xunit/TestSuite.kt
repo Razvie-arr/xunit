@@ -3,9 +3,9 @@ package xunit
 import kotlin.reflect.KClass
 import kotlin.reflect.full.memberFunctions
 
-class TestSuite : Test {
+class TestSuite : Testable {
 
-    private val tests = mutableListOf<Test>()
+    private val testables = mutableListOf<Testable>()
 
     companion object {
 
@@ -27,13 +27,13 @@ class TestSuite : Test {
 
     }
 
-    fun add(test: Test) {
-        tests.add(test)
+    fun add(testable: Testable) {
+        testables.add(testable)
     }
 
     override fun run(result: TestResult) {
-        for (test in tests) {
-            test.run(result)
+        for (testable in testables) {
+            testable.run(result)
         }
     }
 

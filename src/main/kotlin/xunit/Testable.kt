@@ -1,6 +1,6 @@
 package xunit
 
-interface Test {
+interface Testable {
 
     fun run(result: TestResult)
 

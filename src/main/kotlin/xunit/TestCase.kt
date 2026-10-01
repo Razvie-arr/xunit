@@ -2,7 +2,7 @@ package xunit
 
 import kotlin.reflect.full.memberFunctions
 
-open class TestCase(protected val name: String) : Test {
+open class TestCase(protected val name: String) : Testable {
 
     protected open fun setUp() {}
 
