@@ -1,15 +1,7 @@
 package xunit
 
 fun main() {
-    val suite = TestSuite()
-    suite.add(TestCaseTest("testTemplateMethod"))
-    suite.add(TestCaseTest("testResult"))
-    suite.add(TestCaseTest("testFailedResult"))
-    suite.add(TestCaseTest("testFailedResultFormatting"))
-    suite.add(TestCaseTest("testSetUpFailure"))
-    suite.add(TestCaseTest("testSuite"))
-    suite.add(TestCaseTest("testNestedSuite"))
-
+    val suite = TestSuite(TestCaseTest::class)
     val result = TestResult()
     suite.run(result)
     println(result.summary())
