@@ -16,10 +16,12 @@ class WasRun(name: String) : TestCase(name) {
         log += "tearDown "
     }
 
+    @Test
     fun testMethod() {
         log += "testMethod "
     }
 
+    @Test
     fun testBrokenMethod() {
         throw Exception()
     }

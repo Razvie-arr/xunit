@@ -9,6 +9,7 @@ class TestCaseTest(name: String) : TestCase(name) {
         result = TestResult()
     }
 
+    @Test
     fun testTemplateMethod() {
         test = WasRun("testMethod")
 
@@ -17,6 +18,7 @@ class TestCaseTest(name: String) : TestCase(name) {
         assertEquals("setUp testMethod tearDown ", test.log)
     }
 
+    @Test
     fun testResult() {
         test = WasRun("testMethod")
 
@@ -25,6 +27,7 @@ class TestCaseTest(name: String) : TestCase(name) {
         assertEquals("1 run, 0 failed", result.summary())
     }
 
+    @Test
     fun testFailedResult() {
         test = WasRun("testBrokenMethod")
 
@@ -33,6 +36,7 @@ class TestCaseTest(name: String) : TestCase(name) {
         assertEquals("1 run, 1 failed", result.summary())
     }
 
+    @Test
     fun testFailedResultFormatting() {
         result.testStarted()
         result.testFailed()
@@ -40,6 +44,7 @@ class TestCaseTest(name: String) : TestCase(name) {
         assertEquals("1 run, 1 failed", result.summary())
     }
 
+    @Test
     fun testSetUpFailure() {
         val test = WasRun("testMethod")
         test.failSetUp = true
@@ -49,6 +54,7 @@ class TestCaseTest(name: String) : TestCase(name) {
         assertEquals("1 run, 1 failed", result.summary())
     }
 
+    @Test
     fun testSuite() {
         val suite = TestSuite()
         suite.add(WasRun("testMethod"))
@@ -60,6 +66,7 @@ class TestCaseTest(name: String) : TestCase(name) {
         assertEquals("2 run, 1 failed", result.summary())
     }
 
+    @Test
     fun testNestedSuite() {
         val innerSuite = TestSuite()
         innerSuite.add(WasRun("testMethod"))
@@ -73,6 +80,7 @@ class TestCaseTest(name: String) : TestCase(name) {
         assertEquals("2 run, 1 failed", result.summary())
     }
 
+    @Test
     fun testCreateAndRunSuiteFromClass() {
         val suite = TestSuite.from(WasRun::class)
         val result = TestResult()
