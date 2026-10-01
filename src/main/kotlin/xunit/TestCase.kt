@@ -8,8 +8,7 @@ open class TestCase(protected val name: String) {
 
     protected open fun tearDown() {}
 
-    fun run(): TestResult {
-        val result = TestResult()
+    fun run(result: TestResult) {
         result.testStarted()
 
         try {
@@ -18,8 +17,6 @@ open class TestCase(protected val name: String) {
         } catch (_: Throwable) {
             result.testFailed()
         }
-
-        return result
     }
 
     private fun runTestAndTearDown() {

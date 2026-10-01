@@ -1,17 +1,15 @@
 package xunit
 
 fun main() {
-    val tests = listOf(
-        "testTemplateMethod",
-        "testResult",
-        "testFailedResult",
-        "testFailedResultFormatting",
-        "testSetUpFailure"
-    )
+    val suite = TestSuite()
+    suite.add(TestCaseTest("testTemplateMethod"))
+    suite.add(TestCaseTest("testResult"))
+    suite.add(TestCaseTest("testFailedResult"))
+    suite.add(TestCaseTest("testFailedResultFormatting"))
+    suite.add(TestCaseTest("testSetUpFailure"))
+    suite.add(TestCaseTest("testSuite"))
 
-    for (testName in tests) {
-        val result = TestCaseTest(testName).run()
-        println("$testName: ${result.summary()}")
-        assertEquals("1 run, 0 failed", result.summary())
-    }
+    val result = TestResult()
+    suite.run(result)
+    println(result.summary())
 }
